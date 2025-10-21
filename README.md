@@ -1,61 +1,84 @@
-# LongCat-Flash-Chat
-
-<div align="center">
-  <img src="figures/longcat_logo.svg" width="45%" alt="LongCat-Flash" />
-</div>
-<hr>
-
-<div align="center" style="line-height: 1;">
-  <a href="https://longcat.ai/" target="_blank" style="margin: 2px;">
-    <img alt="Chat" src="https://img.shields.io/badge/🤖%20Chat-LongCat--Flash--Chat-ADFF2F?color=29E154&logoColor=white"  fill-opacity="1" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-  <a href="https://huggingface.co/meituan-longcat" target="_blank" style="margin: 2px;">
-    <img alt="Hugging Face" src="https://img.shields.io/badge/%F0%9F%A4%97%20Hugging%20Face-LongCat-ffc107?color=ffc107&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-</div>
-
-<div align="center" style="line-height: 1;">
-  <a href="https://github.com/meituan-longcat/LongCat-Flash-Chat/blob/main/figures/wechat_official_accounts.png" target="_blank" style="margin: 2px;">
-    <img alt="Wechat" src="https://img.shields.io/badge/WeChat-LongCat-brightgreen?logo=wechat&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-  <a href="https://x.com/Meituan_LongCat" target="_blank" style="margin: 2px;">
-    <img alt="Twitter Follow" src="https://img.shields.io/badge/Twitter-LongCat-white?logo=x&logoColor=white" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-</div>
-
-<div align="center" style="line-height: 1;">
-  <a href="LICENSE" style="margin: 2px;">
-    <img alt="License" src="https://img.shields.io/badge/License-MIT-f5de53?&color=f5de53" style="display: inline-block; vertical-align: middle;"/>
-  </a>
-</div>
+<!-- LongCat -->
 
 <p align="center">
-  <a href="https://arxiv.org/abs/2509.01322"><b>Tech Report</b>&nbsp;📄</a>
+  <!-- Logo -->
+  <img src="figures/longcat_logo.svg" width="45%" alt="LongCat Logo">
+</p
+>
+  <!-- title -->
+  <h2 align="center">LongCat-Flash-Chat: A 560B MoE Model for Agents</h2>
+
+<p align="center">
+  <!-- badges -->
+  <a href="https://longcat.ai/ " target="_blank" style="margin: 2px;">
+    <img alt="Chat" src="https://img.shields.io/badge/ 🤖%20Chat-LongCat--Flash--Chat-ADFF2F?color=29E154&logoColor=white"  fill-opacity="1" style="display: inline-block; vertical-align: middle;"/>
+  </a>
+  <a href="https://github.com/meituan-longcat/LongCat-Flash-Chat/blob/main/figures/wechat_official_accounts.png " target="_blank" style="margin: 2px;">
+    <img alt="Wechat" src="https://img.shields.io/badge/WeChat-LongCat-brightgreen?logo=wechat&logoColor=white " style="display: inline-block; vertical-align: middle;"/>
+  </a>
+  <a href="https://x.com/Meituan_LongCat " target="_blank" style="margin: 2px;">
+    <img alt="Twitter Follow" src="https://img.shields.io/badge/Twitter-LongCat-white?logo=x&logoColor=white " style="display: inline-block; vertical-align: middle;"/>
+  </a>
+  <a href="LICENSE" style="margin: 2px;">
+    <img alt="License" src="https://img.shields.io/badge/License-MIT-f5de53?&color=f5de53 " style="display: inline-block; vertical-align: middle;"/>
+  </a>
 </p>
 
+<!-- hugging face -->
+<p align="center">
+  <strong>
+    Download 
+      <a href="https://huggingface.co/meituan-longcat " target="_blank" style="margin: 2px;">
+        <img alt="Hugging Face" src="https://img.shields.io/badge/LongCat--Flash--Chat-ffc107?color=ffc107&logoColor=white " style="display: inline-block; vertical-align: middle;"/>
+       </a>
+    on Hugging Face
+  </strong>
+</p>
+
+<!-- Tech Report -->
+<p align="center">
+  📄<a href="https://arxiv.org/abs/2509.01322 "><b>Tech Report</b>&nbsp;</a>
+</p>
+
+
+<!-- Introduce：-->
 ## Model Introduction
-We introduce LongCat-Flash, a powerful and efficient language model with 560 billion total parameters, featuring an innovative Mixture-of-Experts (MoE) architecture. The model incorporates a dynamic computation mechanism that activates 18.6B∼31.3B parameters (averaging∼27B) based on contextual demands, optimizing both computational efficiency and performance. To achieve advanced training and inference efficiency, we employ a shortcut-connected architecture that expands computation-communication overlap window, achieving over 100 tokens per second (TPS) for inference cost-effectively. Our comprehensive training and scaling strategies ensure stable, efficient training, while tailored data strategies enhance model performance.
+We introduce **LongCat-Flash**, a powerful and efficient language model with **560 billion total parameters**, featuring an innovative **Mixture-of-Experts (MoE) architecture**. The model activates **18.6B–31.3B parameters** (averaging ~**27B**) based on contextual demands through a dynamic computation mechanism, optimizing both computational efficiency and performance. To achieve advanced training and inference efficiency, we employ a **shortcut-connected architecture** that expands computation-communication overlap windows, delivering over **100 tokens per second (TPS)** for cost-effective inference. Our comprehensive training strategy ensures stable scaling, while tailored data curation enhances model capabilities across diverse tasks.  
 
-Now we release LongCat-Flash-Chat, a non-thinking foundation model that delivers highly competitive performance among leading models, with exceptional strengths in agentic tasks.
+Now we release **LongCat-Flash-Chat, a non-thinking foundational model** that delivers **highly competitive performance** among leading models. It demonstrates **exceptional strength in agentic tasks** while maintaining efficiency for real-world deployment.  
 
+You can chat with LongCat-Flash on our official website: [`https://longcat.ai`](https://longcat.ai).  
 
-### Key Features
-
-#### 🌟 Scalable Architectural Design for Computational Efficiency
-
-LongCat-Flash is designed and optimized under two key principles: efficient computation utilization, as well as  efficient training and inference. Specifically, (1) As not all tokens are equal, we introduce the zero-computation experts mechanism in MoE blocks to allocate a dynamic computation budget to important tokens based on their significance, i.e., activating 18.6 to 31.3 billion parameters (out of 560 billion total) based on contextual demands. To ensure consistent computation load, we employ expert bias adjusted by a PID-controller, maintaining an average of∼27 billion activated parameters per token. (2) As communication overhead becomes a bottleneck during MoE model scaling, we incorporate the Shortcut-connected MoE (ScMoE) design to expand the computation-communication overlap window. Combined with customized infrastructure optimizations, this design enables training at a massive scale of over tens of thousands accelerators and inference with high throughput and low latency.
-
-
-#### 🌟 Effective Model Scaling Strategy
-
-Effectively and efficiently scaling model size remains a key challenge in strategy design. To this end, we develop a comprehensive stability-and-scaling framework for robustly training large-scale models: (1) We successfully apply a hyperparameter transfer strategy to such a large model, predicting optimal hyperparameter configurations by leveraging results from smaller proxy models with theoretical guarantees. (2) We initialize the model using a model-growth mechanism based on a refined half-scale checkpoint, achieving improved performance compared to conventional initialization methods. (3) A multi-pronged stability suite incorporates principled router-gradient balancing, a hidden z-loss to suppress massive activations, and fine-tuned optimizer configurations. (4) To enhance the reliability of large-scale cluster training, we introduce deterministic computation. This guarantees the exact reproducibility of experiments and enables the detection of SDC (Silent Data Corruption) during the training process. These interventions ensure that LongCat-Flash ’s training remains stable, with no irrecoverable loss spikes.
-
-#### 🌟 Multi-Stage Training Pipeline for Agentic Capability
-Through a meticulously designed pipeline, LongCat-Flash is endowed with advanced agentic behaviors. Initial efforts focus on constructing a more suitable base model for agentic post-training, where we design a two-stage pretraining data fusion strategy to concentrate reasoning-intensive domain data. During mid-training, we enhance reasoning and coding capabilities while extending the context length to 128k to meet agentic post-training requirements. Building on this advanced base model, we proceed with a multi-stage post-training. Recognizing the scarcity of high-quality, high-difficulty training problems for agentic tasks, we design a multi-agent synthesis framework that defines task difficulty across three axes, i.e., information processing, tool-set complexity, and user interaction—using specialized controllers to generate complex tasks requiring iterative reasoning and environmental interaction.
-
+### 🌟 Key Features
+<!-- Architecture -->
+<!-- #### 🌟 Scalable Architectural Design for Computational Efficiency -->
+  * `Architecture`:  LongCat-Flash adopts a 560B Mixture-of-Experts (MoE) framework with 18.6B–31.3B active parameters per inference (average ∼27B).  
+  A novel **Zero-Computation Experts** mechanism dynamically allocates compute based on token importance, while **Shortcut-connected MoE (ScMoE)** expands the computation–communication overlap window to ensure high parallel efficiency across tens of thousands of accelerators.  
+  * `Efficiency`: Achieves high-throughput inference (>100 tokens/s) and cost-effective large-scale training.  
+  Expert bias is adaptively tuned via a PID controller to maintain stable computational loads and prevent expert imbalance.
+  * `Capabilities`: Through multi-stage training, LongCat-Flash demonstrates strong **reasoning**, **coding**, and **agentic task-solving** performance.  
+  The model supports extended context length (up to 128k tokens) and excels in information processing, tool coordination, and user-interactive reasoning.
+  * `Training`:  Built upon a **stability-and-scaling framework** that integrates hyperparameter transfer, deterministic computation, and multi-agent synthesis.  
+  Key stability enhancements include router-gradient balancing, z-loss regularization, and optimizer fine-tuning for smooth convergence in trillion-scale training.
+  * `Ecosystem`: LongCat-Flash serves as the foundation of Meituan’s agentic AI ecosystem and is open-sourced for the broader community.  
+  It powers internal intelligent services and research in multi-modal reasoning, large-scale distributed RL, and real-world agent benchmarks.
+  
 For more detail, please refer to the comprehensive [***LongCat-Flash Technical Report***](https://github.com/meituan-longcat/LongCat-Flash-Chat/blob/main/tech_report.pdf).
 
-## Evaluation Results
+<!-- News
+<details>
+    <summary><b>News</b></summary>
+    <h3>LongCat-flash</h3>
+      <ul>
+        <li><b>news letter</b></li>
+      </ul>
+    </p>
+</details>
+-->
+
+
+<!-- Ranks -->
+## 📊 Evaluation Results
 | **Benchmark** | **DeepSeek V3.1** | **Qwen3 MoE-2507** | **Kimi-K2** | **GPT-4.1** | **Claude4 Sonnet** | **Gemini2.5 Flash** | **LongCat-Flash** |
 |---------------|-------------------|--------------------|-------------|-------------|--------------------|---------------------|-------------|
 | **Architecture** | MoE | MoE | MoE | - | - | - | MoE |
@@ -98,117 +121,120 @@ For more detail, please refer to the comprehensive [***LongCat-Flash Technical R
 | Criminal | 87.83 | 89.13 | 77.19 | 81.58 | 87.58 | - | 91.24 |
 | Misinformation | 83.17 | 77.76 | 42.68 | 45.49 | 54.91 | - | 81.72 |
 | Privacy | 98.80 | 98.80 | 96.39 | 98.80 | 100.00 | - | 93.98 |
+<!-- 
+See full benchmark comparison → [Detailed Results](docs/benchmark.md)
+-->
 
-Note:
-* Values marked with `*` are sourced from other public reports. 
-* DeepSeek-V3.1, Qwen3-235B-A22B, Gemini2.5-Flash, and Claude4-Sonnet are evaluated under their non-thinking mode.
+> [!Note]
+> 1.  Values marked with `*` are sourced from other public reports.
+> 2.  DeepSeek-V3.1, Qwen3-235B-A22B, Gemini2.5-Flash, and Claude4-Sonnet are evaluated under their non-thinking mode.
 
-## Quick Start
 
-### Chat Template
-The details of our chat template are provided in the `tokenizer_config.json` file. Below are some examples.
+## 🔍 Quick Start
+The details of our chat template are provided in the `tokenizer_config.json` file. Below are some examples.  
 
 #### First-Turn
-
 With the following prefix, LongCat-Flash can generate responses corresponding to user queries:
 
-```
-[Round 0] USER:{query} ASSISTANT:
-```
+    [Round 0] USER:{query} ASSISTANT:
 
 When a system prompt is specified, the prefix will take the following format:
 
-```
-SYSTEM:{system_prompt} [Round 0] USER:{query} ASSISTANT:
-```
+    SYSTEM:{system_prompt} [Round 0] USER:{query} ASSISTANT:
 
 #### Multi-Turn
-
 In multi-turn scenarios, the prefix is constructed by concatenating the context with the latest user query:
-```
-SYSTEM:{system_prompt} [Round 0] USER:{query} ASSISTANT:{response}</longcat_s>... [Round N-1] USER:{query} ASSISTANT:{response}</longcat_s> [Round N] USER:{query} ASSISTANT:
-```
+
+    SYSTEM:{system_prompt} [Round 0] USER:{query} ASSISTANT:{response}</longcat_s>... [Round N-1] USER:{query} ASSISTANT:{response}</longcat_s> [Round N] USER:{query} ASSISTANT:
 
 Here, N denotes the N-th round of user queries, with indexing starting from zero.
 
 #### ToolCall
+LongCat-Flash supports tool calling in the following format:  
 
-LongCat-Flash supports tool calling in the following format:
-```
-{tool_description}
+    {tool_description}
 
-## Messages
-SYSTEM:{system_prompt} [Round 0] USER:{query} ASSISTANT:
-```
+    ## Messages
+    SYSTEM:{system_prompt} [Round 0] USER:{query} ASSISTANT:
 
+tool_description is:  
 
+    ## Tools
+    You have access to the following tools: 
 
-The tool_description is:
-```markdown
-## Tools
-You have access to the following tools: 
+    ### Tool namespace: function
 
-### Tool namespace: function
+    #### Tool name: {func.name}
 
-#### Tool name: {func.name}
+    Description: {func.description}
 
-Description: {func.description}
+    InputSchema: 
+    {json.dumps(func.parameters, indent=2)}
 
-InputSchema: 
-{json.dumps(func.parameters, indent=2)}
-
-**Note**: For each function call, return a json object with function name and arguments within <longcat_tool_call></longcat_tool_call> XML tags as follows:
-<longcat_tool_call>
-{"name": <function-name>, "arguments": <args-dict>}
-</longcat_tool_call>
-When multiple functions need to be called simultaneously, each function call should be wrapped in its own <longcat_tool_call> tag and placed consecutively. For example:
-<longcat_tool_call>
-{"name": <function-name>, "arguments": <args-dict>}
-</longcat_tool_call><longcat_tool_call>
-{"name": <function-name>, "arguments": <args-dict>}
-</longcat_tool_call>
-```
+    **Note**: For each function call, return a json object with function name and arguments within <longcat_tool_call></longcat_tool_call> XML tags as follows:
+    <longcat_tool_call>
+    {"name": <function-name>, "arguments": <args-dict>}
+    </longcat_tool_call>
+    When multiple functions need to be called simultaneously, each function call should be wrapped in its own <longcat_tool_call> tag and placed consecutively. For example:
+    <longcat_tool_call>
+    {"name": <function-name>, "arguments": <args-dict>}
+    </longcat_tool_call><longcat_tool_call>
+    {"name": <function-name>, "arguments": <args-dict>}
+    </longcat_tool_call>
 
 
-## Deployment
+<!--
+#### ▶ Online Demo
+Try it instantly 👉 [https://longcat.chat ](https://longcat.chat )
+
+#### 😊 Inference via HuggingFace
+from transformers import AutoModelForCausalLM, AutoTokenizer
+
+model = AutoModelForCausalLM.from_pretrained("[hf_repo_name]", torch_dtype="auto", device_map="auto") tokenizer = AutoTokenizer.from_pretrained("[hf_repo_name]")
+
+prompt = "[your prompt here]" output = model.generate(**tokenizer(prompt, return_tensors="pt").to(model.device), max_new_tokens=512) print(tokenizer.decode(output[0]))
+
+### ⚙️ Use via API
+- API Docs: [api_doc_link]  
+- SDK Guide: [sdk_link]
+-->
+
+
+## ⚙ Deployment
 We have implemented basic adaptations in both SGLang and vLLM to support the deployment of LongCat-Flash. Please refer to the [Deployment Guide](docs/deployment_guide.md) for detailed deployment instructions.
 
-## Chat Website
-You can chat with LongCat-Flash on our official website: [https://longcat.ai](https://longcat.ai).
 
-## License Agreement
+## 🔗 Citation
+if you find this work useful, please consider citing our technical report.
 
-The **model weights** are released under the **MIT License**. 
+    @misc{meituan2025longcatflashtechnicalreport, 
+        title={LongCat-Flash Technical Report}, 
+        author={Meituan LongCat Team}, 
+        year={2025}, 
+        eprint={2509.01322}, 
+        archivePrefix={arXiv}, 
+        primaryClass={cs.CL}, 
+        url={https://arxiv.org/abs/2509.01322}, 
+    }
+    
 
-Any contributions to this repository are licensed under the MIT License, unless otherwise stated. This license does not grant any rights to use Meituan trademarks or patents. 
-
-See the [LICENSE](LICENSE) file for the full license text.
-
-## Usage Considerations 
-This model has not been specifically designed or comprehensively evaluated for every possible downstream application. 
+## ⚠ Important Notes
+This model has not been specifically designed or comprehensively evaluated for **every possible downstream application**. 
 
 Developers should take into account the known limitations of large language models, including performance variations across different languages, and carefully assess accuracy, safety, and fairness before deploying the model in sensitive or high-risk scenarios. 
 It is the responsibility of developers and downstream users to understand and comply with all applicable laws and regulations relevant to their use case, including but not limited to data protection, privacy, and content safety requirements. 
 
 Nothing in this Model Card should be interpreted as altering or restricting the terms of the MIT License under which the model is released. 
 
-## Citation
-We kindly encourage citation of our work if you find it useful.
 
-```
-@misc{meituan2025longcatflashtechnicalreport, 
-    title={LongCat-Flash Technical Report}, 
-    author={Meituan LongCat Team}, 
-    year={2025}, 
-    eprint={2509.01322}, 
-    archivePrefix={arXiv}, 
-    primaryClass={cs.CL}, 
-    url={https://arxiv.org/abs/2509.01322}, 
-}
-```
+## 🧩 License
+The **model weights** are released under the **MIT License**.   
 
-## Contact
-Please contact us at <a href="mailto:longcat-team@meituan.com">longcat-team@meituan.com</a> or join our WeChat Group if you have any questions.
+Any contributions to this repository are licensed under the MIT License, unless otherwise stated. This license does not grant any rights to use Meituan trademarks or patents. 
 
-#### WeChat Group
-<img src=figures/wechat_qrcode.png width="200px">
+See the [LICENSE](LICENSE) file for the full license text.
+
+
+## 💬 Contact
+If you have any questions, please email us at `longcat-team@meituan.com` or join our WeChat group.  
+<img alt="WeChat QR Code" src=figures/wechat_qrcode.png width="200px"/>
